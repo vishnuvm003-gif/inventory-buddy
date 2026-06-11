@@ -85,6 +85,7 @@ const Products: React.FC = () => {
       showToast('Product updated successfully', 'success');
     } catch (error) {
       showToast('Failed to update product', 'error');
+      console.log(error)
     } finally {
       setSaving(false);
     }
@@ -206,8 +207,8 @@ const Products: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
-                {products.map((product) => (
-                  <tr key={product.id} className="hover:bg-muted/30 transition-colors">
+                {products.map((product, index) => (
+                  <tr key={product.id ?? index} className="hover:bg-muted/30 transition-colors">
                     {editingId === product.id ? (
                       <>
                         <td className="px-6 py-4">
